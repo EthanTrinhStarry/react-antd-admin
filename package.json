@@ -13,6 +13,7 @@
     "dayjs": "^1.11.23",
     "driver.js": "^1.9.0",
     "history": "^5.3.0",
+    "next": "^16.0.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-intl": "^12.1.4",
@@ -22,9 +23,10 @@
     "recharts": "^3.10.1"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "serve": "vite preview",
+    "dev": "next dev --webpack -p 8889",
+    "build": "next build --webpack",
+    "start": "next start -p 8889",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext js,ts,tsx",
     "lint:antd": "antd --version 6.6.6 --lang en lint .",
     "format": "prettier --write **/*.{js,ts,tsx} && eslint . --ext js,ts,tsx --fix"
@@ -64,15 +66,13 @@
     "@types/react-dom": "^19.3.0",
     "@typescript-eslint/eslint-plugin": "^8.71.2",
     "@typescript-eslint/parser": "^8.71.2",
-    "@vitejs/plugin-react": "^6.1.2",
+    "@svgr/webpack": "^8.1.0",
     "eslint": "^10.12.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-simple-import-sort": "^14.0.0",
-    "less": "^4.9.1",
     "prettier": "^3.9.10",
-    "typescript": "^6.0.3",
-    "vite": "^8.3.4",
-    "vite-plugin-svgr": "^5.2.0"
+    "sass": "^1.93.0",
+    "typescript": "^6.0.3"
   }
 }

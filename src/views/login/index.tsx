@@ -1,8 +1,6 @@
 import type { LoginParams } from '@/interface/user/login';
 import type { FC } from 'react';
 
-import './index.less';
-
 import { Button, Checkbox, Form, Input, theme as antTheme } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 

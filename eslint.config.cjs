@@ -6,7 +6,7 @@ const typescriptParser = require('@typescript-eslint/parser');
 
 module.exports = [
   {
-    ignores: ['node_modules/**', 'dist/**', '**/*.svg', '**/*.ico'],
+    ignores: ['node_modules/**', '.next/**', 'next-env.d.ts', 'dist/**', '**/*.svg', '**/*.ico'],
   },
   {
     files: ['**/*.{js,ts,tsx}'],

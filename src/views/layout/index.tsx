@@ -1,8 +1,6 @@
 import type { MenuChild, MenuList } from '@/interface/layout/menu.interface';
 import type { FC } from 'react';
 
-import './index.less';
-
 import { Drawer, Layout, theme as antTheme } from 'antd';
 import { Suspense, useCallback, useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router';

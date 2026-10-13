@@ -6,11 +6,11 @@ import { createElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Avator from '@/assets/header/avator.jpeg';
-import EnUsSvg from '@/assets/header/en_US.svg?react';
-import LanguageSvg from '@/assets/header/language.svg?react';
-import MoonSvg from '@/assets/header/moon.svg?react';
-import SunSvg from '@/assets/header/sun.svg?react';
-import ZhCnSvg from '@/assets/header/zh_CN.svg?react';
+import EnUsSvg from '@/assets/header/en_US.svg';
+import LanguageSvg from '@/assets/header/language.svg';
+import MoonSvg from '@/assets/header/moon.svg';
+import SunSvg from '@/assets/header/sun.svg';
+import ZhCnSvg from '@/assets/header/zh_CN.svg';
 import AntdSvg from '@/assets/logo/antd.svg';
 import ReactSvg from '@/assets/logo/react.svg';
 import { LocaleFormatter, useLocale } from '@/locales';
@@ -79,8 +79,8 @@ const HeaderComponent: FC<HeaderProps> = ({ collapsed, toggle }) => {
     <Header className="layout-page-header bg-2" style={{ backgroundColor: token.token.colorBgContainer }}>
       {device !== 'MOBILE' && (
         <div className="logo" style={{ width: collapsed ? 80 : 200 }}>
-          <img src={ReactSvg} alt="" style={{ marginRight: collapsed ? '2px' : '20px' }} />
-          <img src={AntdSvg} alt="" />
+          <ReactSvg aria-hidden="true" style={{ marginRight: collapsed ? '2px' : '20px' }} />
+          <AntdSvg aria-hidden="true" />
         </div>
       )}
       <div className="layout-page-header-main">
@@ -150,7 +150,7 @@ const HeaderComponent: FC<HeaderProps> = ({ collapsed, toggle }) => {
               }}
             >
               <span className="user-action">
-                <img src={Avator} className="user-avator" alt="avator" />
+                <img src={Avator.src} className="user-avator" alt="avatar" />
               </span>
             </Dropdown>
           ) : (

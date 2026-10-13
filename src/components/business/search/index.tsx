@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import type { MyFormProps } from '@/components/core/form';
 
 import { css } from '@emotion/react';

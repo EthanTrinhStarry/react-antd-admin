@@ -1,6 +1,3 @@
-import 'driver.js/dist/driver.css';
-import './index.less';
-
 import { driver } from 'driver.js';
 import { useRef } from 'react';
 

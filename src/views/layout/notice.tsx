@@ -6,7 +6,7 @@ import { Avatar, Badge, Listy, Popover, Spin, Tabs, Tag, Tooltip } from 'antd';
 import { useEffect, useState } from 'react';
 
 import { getNoticeList } from '@/api/layout.api';
-import NoticeSvg from '@/assets/header/notice.svg?react';
+import NoticeSvg from '@/assets/header/notice.svg';
 import { EventStatus } from '@/interface/layout/notice.interface';
 import { useLocale } from '@/locales';
 import { useAppSelector } from '@/stores/hooks';

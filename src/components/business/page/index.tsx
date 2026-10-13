@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import type { MyAsideProps } from '../aside';
 import type { MyRadioCardssOption } from '../radio-cards';
 import type { MyTabsOption } from '../tabs';

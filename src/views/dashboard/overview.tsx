@@ -8,8 +8,8 @@ import { Area, AreaChart, Bar, BarChart, ResponsiveContainer, Tooltip as RToolti
 
 import { useLocale } from '@/locales';
 
-import CaretDownIcon from './assets/caret-down.svg?react';
-import CaretUpIcon from './assets/caret-up.svg?react';
+import CaretDownIcon from './assets/caret-down.svg';
+import CaretUpIcon from './assets/caret-up.svg';
 
 const data = new Array(14).fill(null).map((_, index) => ({
   name: dayjs().add(index, 'day').format('YYYY-MM-DD'),

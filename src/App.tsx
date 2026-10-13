@@ -1,4 +1,7 @@
+'use client';
+
 import 'dayjs/locale/zh-cn';
+import './mock';
 
 import { App as AntdApp, ConfigProvider, Spin, theme as antdTheme } from 'antd';
 import enUS from 'antd/es/locale/en_US';
@@ -6,8 +9,10 @@ import zhCN from 'antd/es/locale/zh_CN';
 import dayjs from 'dayjs';
 import { Suspense, useEffect } from 'react';
 import { IntlProvider } from 'react-intl';
+import { Provider } from 'react-redux';
 
 import { history, HistoryRouter } from '@/routes/history';
+import store from '@/stores';
 import { useAppDispatch, useAppSelector } from '@/stores/hooks';
 import { setMessageApi } from '@/utils/antd-message';
 
@@ -27,7 +32,7 @@ const AntdMessageBridge: React.FC = () => {
   return null;
 };
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
   const { locale } = useAppSelector(state => state.user);
   const { theme, loading } = useAppSelector(state => state.global);
   const dispatch = useAppDispatch();
@@ -112,5 +117,11 @@ const App: React.FC = () => {
     </ConfigProvider>
   );
 };
+
+const App: React.FC = () => (
+  <Provider store={store}>
+    <AppContent />
+  </Provider>
+);
 
 export default App;

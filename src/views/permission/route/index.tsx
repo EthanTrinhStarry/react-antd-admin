@@ -1,7 +1,5 @@
 import type { FC } from 'react';
 
-import './index.less';
-
 import { Typography } from 'antd';
 
 import { LocaleFormatter } from '@/locales';

@@ -1,7 +1,5 @@
 import type { FC } from 'react';
 
-import './index.less';
-
 import { useEffect, useState } from 'react';
 
 import Overview from './overview';

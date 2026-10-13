@@ -1,10 +1,10 @@
 import type { FC } from 'react';
 
-import AccountSvg from '@/assets/menu/account.svg?react';
-import DashboardSvg from '@/assets/menu/dashboard.svg?react';
-import DocumentationSvg from '@/assets/menu/documentation.svg?react';
-import GuideSvg from '@/assets/menu/guide.svg?react';
-import PermissionSvg from '@/assets/menu/permission.svg?react';
+import AccountSvg from '@/assets/menu/account.svg';
+import DashboardSvg from '@/assets/menu/dashboard.svg';
+import DocumentationSvg from '@/assets/menu/documentation.svg';
+import GuideSvg from '@/assets/menu/guide.svg';
+import PermissionSvg from '@/assets/menu/permission.svg';
 
 interface CustomIconProps {
   type: string;
