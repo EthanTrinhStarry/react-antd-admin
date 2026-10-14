@@ -24,7 +24,7 @@ const LayoutPage: FC = () => {
   const [openKey, setOpenkey] = useState<string>();
   const [selectedKey, setSelectedKey] = useState<string>(location.pathname);
   const [menuList, setMenuList] = useState<MenuList>([]);
-  const { device, collapsed, newUser } = useAppSelector(state => state.user);
+  const { device, collapsed, hydrated, newUser } = useAppSelector(state => state.user);
   const token = antTheme.useToken();
 
   const isMobile = device === 'MOBILE';
@@ -95,10 +95,10 @@ const LayoutPage: FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (newUser) {
-      driverStart();
+    if (hydrated && newUser) {
+      return driverStart();
     }
-  }, [newUser]);
+  }, [hydrated, newUser]);
 
   return (
     <Layout className="layout-page">

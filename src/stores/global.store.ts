@@ -7,11 +7,8 @@ interface State {
   loading: boolean;
 }
 
-const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-const userTheme = localStorage.getItem('theme') as State['theme'];
-
 const initialState: State = {
-  theme: userTheme || systemTheme,
+  theme: 'light',
   loading: false,
 };
 
@@ -22,7 +19,7 @@ const globalSlice = createSlice({
     setGlobalState(state, action: PayloadAction<Partial<State>>) {
       Object.assign(state, action.payload);
 
-      if (action.payload.theme) {
+      if (action.payload.theme && typeof document !== 'undefined') {
         const body = document.body;
 
         if (action.payload.theme === 'dark') {

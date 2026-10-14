@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useLocale } from '@/locales';
 import { useAppDispatch } from '@/stores/hooks';
 import { setUserItem } from '@/stores/user.store';
+import { browserStorage, STORAGE_KEYS } from '@/utils/storage';
 
 export const useGuide = () => {
   const { formatMessage } = useLocale();
@@ -12,7 +13,7 @@ export const useGuide = () => {
   const driverInstance = useRef(
     driver({
       allowKeyboardControl: false,
-      allowClose: false,
+      allowClose: true,
       prevBtnText: formatMessage({ id: 'app.guide.driverjs.prevBtnText' }),
       nextBtnText: formatMessage({ id: 'app.guide.driverjs.nextBtnText' }),
       doneBtnText: formatMessage({ id: 'app.guide.driverjs.doneBtnText' }),
@@ -20,7 +21,7 @@ export const useGuide = () => {
   );
 
   const driverStart = () => {
-    setTimeout(() => {
+    const timer = window.setTimeout(() => {
       driverInstance.current.setSteps([
         {
           element: '#sidebar-trigger',
@@ -72,15 +73,16 @@ export const useGuide = () => {
         },
       ]);
 
-      localStorage.setItem('newUser', 'false');
+      browserStorage.set(STORAGE_KEYS.newUser, false);
       dispatch(
         setUserItem({
           newUser: false,
         }),
       );
       driverInstance.current.drive();
-      console.log('guide started');
     }, 1000);
+
+    return () => window.clearTimeout(timer);
   };
 
   return {

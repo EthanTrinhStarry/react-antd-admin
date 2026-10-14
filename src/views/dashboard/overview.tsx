@@ -12,8 +12,8 @@ import CaretDownIcon from './assets/caret-down.svg';
 import CaretUpIcon from './assets/caret-up.svg';
 
 const data = new Array(14).fill(null).map((_, index) => ({
-  name: dayjs().add(index, 'day').format('YYYY-MM-DD'),
-  number: Math.floor(Math.random() * 8 + 1),
+  name: dayjs('2024-01-01').add(index, 'day').format('YYYY-MM-DD'),
+  number: ((index * 5) % 8) + 1,
 }));
 
 const wrapperCol: ColProps = {

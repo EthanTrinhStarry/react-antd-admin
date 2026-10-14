@@ -7,11 +7,11 @@ import { Brush, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Too
 import { LocaleFormatter } from '@/locales';
 
 const data = new Array(20).fill(null).map((_, index) => ({
-  name: dayjs()
+  name: dayjs('2024-01-01T00:00:00')
     .add(index * 30, 'minute')
     .format('HH:mm'),
-  traffic: Math.floor(Math.random() * 120 + 1),
-  payments: Math.floor(Math.random() * 120 + 1),
+  traffic: ((index * 37) % 120) + 1,
+  payments: ((index * 53 + 17) % 120) + 1,
 }));
 
 const CustomTooltip: FC<any> = ({ active, payload, label }) => {

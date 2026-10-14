@@ -1,12 +1,17 @@
-'use client';
+import { redirect } from 'next/navigation';
 
-import dynamic from 'next/dynamic';
+import App from '@/App';
 
-const ClientApp = dynamic(() => import('@/App'), {
-  loading: () => <div className="next-loading" aria-label="Loading application" />,
-  ssr: false,
-});
+interface PageProps {
+  params: Promise<{ slug?: string[] }>;
+}
 
-export default function Page() {
-  return <ClientApp />;
+export default async function Page({ params }: PageProps) {
+  const { slug } = await params;
+
+  if (!slug?.length) {
+    redirect('/dashboard');
+  }
+
+  return <App initialPath={`/${slug.join('/')}`} />;
 }

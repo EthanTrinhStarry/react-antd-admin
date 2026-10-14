@@ -17,6 +17,7 @@ import { LocaleFormatter, useLocale } from '@/locales';
 import { setGlobalState } from '@/stores/global.store';
 import { useAppDispatch, useAppSelector } from '@/stores/hooks';
 import { setUserItem } from '@/stores/user.store';
+import { browserStorage, STORAGE_KEYS } from '@/utils/storage';
 
 import { logoutAsync } from '../../stores/user.action';
 import HeaderNoticeComponent from './notice';
@@ -61,13 +62,13 @@ const HeaderComponent: FC<HeaderProps> = ({ collapsed, toggle }) => {
 
   const selectLocale = ({ key }: { key: any }) => {
     dispatch(setUserItem({ locale: key }));
-    localStorage.setItem('locale', key);
+    browserStorage.set(STORAGE_KEYS.locale, key);
   };
 
   const onChangeTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
 
-    localStorage.setItem('theme', newTheme);
+    browserStorage.set(STORAGE_KEYS.theme, newTheme);
     dispatch(
       setGlobalState({
         theme: newTheme,

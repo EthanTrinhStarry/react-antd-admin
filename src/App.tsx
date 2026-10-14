@@ -14,7 +14,10 @@ import { Provider } from 'react-redux';
 import { history, HistoryRouter } from '@/routes/history';
 import store from '@/stores';
 import { useAppDispatch, useAppSelector } from '@/stores/hooks';
+import { setUserItem } from '@/stores/user.store';
 import { setMessageApi } from '@/utils/antd-message';
+import { getGlobalState } from '@/utils/getGloabal';
+import { browserStorage, STORAGE_KEYS } from '@/utils/storage';
 
 import { localeConfig, LocaleFormatter } from './locales';
 import RenderRouter from './routes';
@@ -32,34 +35,60 @@ const AntdMessageBridge: React.FC = () => {
   return null;
 };
 
-const AppContent: React.FC = () => {
-  const { locale } = useAppSelector(state => state.user);
-  const { theme, loading } = useAppSelector(state => state.global);
+const ClientStateHydrator: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const setTheme = (dark = true) => {
+  useEffect(() => {
+    const setTheme = (dark: boolean) => {
+      dispatch(
+        setGlobalState({
+          theme: dark ? 'dark' : 'light',
+        }),
+      );
+    };
+
+    const username = browserStorage.get(STORAGE_KEYS.username) || '';
+    const savedLocale = browserStorage.get(STORAGE_KEYS.locale);
+    const savedRole = browserStorage.get(STORAGE_KEYS.role);
+    const legacyRole = username === 'admin' || username === 'guest' ? username : '';
+    const role = savedRole === 'admin' || savedRole === 'guest' ? savedRole : legacyRole;
+
     dispatch(
-      setGlobalState({
-        theme: dark ? 'dark' : 'light',
+      setUserItem({
+        hydrated: true,
+        ...getGlobalState(),
+        locale: savedLocale === 'zh_CN' ? 'zh_CN' : 'en_US',
+        newUser: browserStorage.getBoolean(STORAGE_KEYS.newUser, true),
+        logged: Boolean(browserStorage.get(STORAGE_KEYS.token)),
+        username,
+        role,
       }),
     );
-  };
 
-  /** initial theme */
-  useEffect(() => {
-    setTheme(theme === 'dark');
+    const savedTheme = browserStorage.get(STORAGE_KEYS.theme);
+    const mql = window.matchMedia('(prefers-color-scheme: dark)');
 
-    // watch system theme change
-    if (!localStorage.getItem('theme')) {
-      const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    setTheme(savedTheme === 'dark' || (savedTheme !== 'light' && mql.matches));
 
-      function matchMode(e: MediaQueryListEvent) {
-        setTheme(e.matches);
-      }
+    if (savedTheme !== 'dark' && savedTheme !== 'light') {
+      const matchMode = (event: MediaQueryListEvent) => setTheme(event.matches);
 
       mql.addEventListener('change', matchMode);
+
+      return () => mql.removeEventListener('change', matchMode);
     }
-  }, []);
+  }, [dispatch]);
+
+  return null;
+};
+
+interface AppProps {
+  initialPath: string;
+}
+
+const AppContent: React.FC<AppProps> = ({ initialPath }) => {
+  const { locale } = useAppSelector(state => state.user);
+  const { theme, loading } = useAppSelector(state => state.global);
 
   // set the locale for the user
   // more languages options can be added here
@@ -96,8 +125,9 @@ const AppContent: React.FC = () => {
       <AntdApp className="app-container">
         <AntdMessageBridge />
         <IntlProvider locale={locale.split('_')[0]} messages={localeConfig[locale]}>
-          <HistoryRouter history={history}>
+          <HistoryRouter history={history} initialPath={initialPath}>
             <Suspense fallback={null}>
+              <ClientStateHydrator />
               {loading && (
                 <Spin
                   fullscreen
@@ -118,9 +148,9 @@ const AppContent: React.FC = () => {
   );
 };
 
-const App: React.FC = () => (
+const App: React.FC<AppProps> = props => (
   <Provider store={store}>
-    <AppContent />
+    <AppContent {...props} />
   </Provider>
 );
 

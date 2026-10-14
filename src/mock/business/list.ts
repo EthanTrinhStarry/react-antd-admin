@@ -41,7 +41,8 @@ new Array(30).fill(undefined).forEach((item, index) => {
 });
 
 mock.onGet(/\/business\/list*/).reply(config => {
-  const params = config.params ?? Object.fromEntries(new URL(config.url ?? '', window.location.origin).searchParams);
+  const origin = typeof window === 'undefined' ? 'http://localhost' : window.location.origin;
+  const params = config.params ?? Object.fromEntries(new URL(config.url ?? '', origin).searchParams);
 
   return [200, intercepter(data, params)];
 });
