@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 import type { TreeDataNode, TreeProps } from 'antd';
 import type { FC } from 'react';
 

@@ -18,8 +18,8 @@
 <a href="https://github.com/reduxjs/redux" rel="nofollow">
   <img src="https://img.shields.io/badge/@reduxjs/toolkit-2.13.0-brightgreen" alt="Redux Toolkit">
 </a>
-<a href="https://github.com/vitejs/vite" rel="nofollow">
-  <img src="https://img.shields.io/badge/vite-8.3.4-brightgreen" alt="Vite">
+<a href="https://github.com/vercel/next.js" rel="nofollow">
+  <img src="https://img.shields.io/badge/next.js-16-brightgreen" alt="Next.js">
 </a>
 <a href="https://github.com/WinmezzZ/react-antd-admin/blob/master/LICENSE">
   <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
@@ -36,7 +36,7 @@
 - 📜 **区块**: 通过区块模板快速构建页面
 - 💎 **Hooks**: 使用最新的 react hooks API 代替传统的 class API
 - 📐 **常见设计模式**: 提炼自中后台应用的典型页面和场景
-- 🚀 **最新技术栈**: 使用 React、Hooks、Redux Toolkit、Ant Design、TypeScript 和 Vite 开发
+- 🚀 **最新技术栈**: 使用 React、Hooks、Redux Toolkit、Ant Design、TypeScript 和 Next.js 开发
 - 📱 **响应式**: 针对不同屏幕大小设计
 - 🎨 **主题**: 动态切换主题色
 - 🌐 **国际化**: 内建业界通用的国际化方案
@@ -70,7 +70,7 @@ yarn install
 yarn build
 ```
 
-生产文件会输出到 `dist`。如果部署在子路径下，请在 `vite.config.ts` 中配置 Vite 的 `base` 选项。
+生产构建会输出到 `.next`。构建完成后可运行 `npm start` 或 `yarn start` 启动服务。
 
 ## 🖥 浏览器支持
 

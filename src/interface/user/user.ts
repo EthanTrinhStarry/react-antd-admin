@@ -5,6 +5,9 @@ import type { MenuChild } from '@/interface/layout/menu.interface';
 export type Locale = 'zh_CN' | 'en_US';
 
 export interface UserState {
+  /** Has browser-only state been restored after hydration? */
+  hydrated: boolean;
+
   username: string;
 
   /** menu list for init tagsView */
@@ -13,7 +16,7 @@ export interface UserState {
   /** login status */
   logged: boolean;
 
-  role: Role;
+  role: Role | '';
 
   /** user's device */
   device: Device;

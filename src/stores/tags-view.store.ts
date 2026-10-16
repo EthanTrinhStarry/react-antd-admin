@@ -6,7 +6,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { history } from '@/routes/history';
 
 const initialState: TagState = {
-  activeTagId: location.pathname,
+  activeTagId: '/',
   tags: [],
 };
 

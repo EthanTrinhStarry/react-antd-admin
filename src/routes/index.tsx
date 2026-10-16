@@ -5,29 +5,29 @@ import { lazy } from 'react';
 import { Navigate } from 'react-router';
 import { useRoutes } from 'react-router-dom';
 
-import Dashboard from '@/pages/dashboard';
-import LayoutPage from '@/pages/layout';
-import LoginPage from '@/pages/login';
+import Dashboard from '@/views/dashboard';
+import LayoutPage from '@/views/layout';
+import LoginPage from '@/views/login';
 
 import WrapperRouteComponent from './config';
 
-const NotFound = lazy(() => import(/* webpackChunkName: "404'"*/ '@/pages/404'));
-const Documentation = lazy(() => import(/* webpackChunkName: "404'"*/ '@/pages/doucumentation'));
-const Guide = lazy(() => import(/* webpackChunkName: "guide'"*/ '@/pages/guide'));
-const RoutePermission = lazy(() => import(/* webpackChunkName: "route-permission"*/ '@/pages/permission/route'));
-const FormPage = lazy(() => import(/* webpackChunkName: "form'"*/ '@/pages/components/form'));
-const TablePage = lazy(() => import(/* webpackChunkName: "table'"*/ '@/pages/components/table'));
-const SearchPage = lazy(() => import(/* webpackChunkName: "search'"*/ '@/pages/components/search'));
-const TabsPage = lazy(() => import(/* webpackChunkName: "tabs'"*/ '@/pages/components/tabs'));
-const AsidePage = lazy(() => import(/* webpackChunkName: "aside'"*/ '@/pages/components/aside'));
-const RadioCardsPage = lazy(() => import(/* webpackChunkName: "radio-cards'"*/ '@/pages/components/radio-cards'));
-const BusinessBasicPage = lazy(() => import(/* webpackChunkName: "basic-page" */ '@/pages/business/basic'));
-const BusinessWithSearchPage = lazy(() => import(/* webpackChunkName: "with-search" */ '@/pages/business/with-search'));
-const BusinessWithAsidePage = lazy(() => import(/* webpackChunkName: "with-aside" */ '@/pages/business/with-aside'));
+const NotFound = lazy(() => import(/* webpackChunkName: "404'"*/ '@/views/404'));
+const Documentation = lazy(() => import(/* webpackChunkName: "404'"*/ '@/views/doucumentation'));
+const Guide = lazy(() => import(/* webpackChunkName: "guide'"*/ '@/views/guide'));
+const RoutePermission = lazy(() => import(/* webpackChunkName: "route-permission"*/ '@/views/permission/route'));
+const FormPage = lazy(() => import(/* webpackChunkName: "form'"*/ '@/views/components/form'));
+const TablePage = lazy(() => import(/* webpackChunkName: "table'"*/ '@/views/components/table'));
+const SearchPage = lazy(() => import(/* webpackChunkName: "search'"*/ '@/views/components/search'));
+const TabsPage = lazy(() => import(/* webpackChunkName: "tabs'"*/ '@/views/components/tabs'));
+const AsidePage = lazy(() => import(/* webpackChunkName: "aside'"*/ '@/views/components/aside'));
+const RadioCardsPage = lazy(() => import(/* webpackChunkName: "radio-cards'"*/ '@/views/components/radio-cards'));
+const BusinessBasicPage = lazy(() => import(/* webpackChunkName: "basic-page" */ '@/views/business/basic'));
+const BusinessWithSearchPage = lazy(() => import(/* webpackChunkName: "with-search" */ '@/views/business/with-search'));
+const BusinessWithAsidePage = lazy(() => import(/* webpackChunkName: "with-aside" */ '@/views/business/with-aside'));
 const BusinessWithRadioCardsPage = lazy(
-  () => import(/* webpackChunkName: "with-aside" */ '@/pages/business/with-radio-cards'),
+  () => import(/* webpackChunkName: "with-aside" */ '@/views/business/with-radio-cards'),
 );
-const BusinessWithTabsPage = lazy(() => import(/* webpackChunkName: "with-tabs" */ '@/pages/business/with-tabs'));
+const BusinessWithTabsPage = lazy(() => import(/* webpackChunkName: "with-tabs" */ '@/views/business/with-tabs'));
 
 const routeList: RouteObject[] = [
   {

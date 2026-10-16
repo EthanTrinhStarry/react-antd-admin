@@ -1,20 +1,19 @@
-import type { Role } from '@/interface/user/login';
 import type { Locale, UserState } from '@/interface/user/user';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getGlobalState } from '@/utils/getGloabal';
-
 const initialState: UserState = {
-  ...getGlobalState(),
+  hydrated: false,
+  device: 'DESKTOP',
+  collapsed: false,
   noticeCount: 0,
-  locale: (localStorage.getItem('locale')! || 'en_US') as Locale,
-  newUser: JSON.parse(localStorage.getItem('newUser')!) ?? true,
-  logged: localStorage.getItem('t') ? true : false,
+  locale: 'en_US' as Locale,
+  newUser: true,
+  logged: false,
   menuList: [],
-  username: localStorage.getItem('username') || '',
-  role: (localStorage.getItem('username') || '') as Role,
+  username: '',
+  role: '',
 };
 
 const userSlice = createSlice({
@@ -22,12 +21,6 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUserItem(state, action: PayloadAction<Partial<UserState>>) {
-      const { username } = action.payload;
-
-      if (username !== state.username) {
-        localStorage.setItem('username', action.payload.username || '');
-      }
-
       Object.assign(state, action.payload);
     },
   },

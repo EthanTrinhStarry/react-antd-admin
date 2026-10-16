@@ -18,8 +18,8 @@ Modern admin dashboard built with React Hooks and TypeScript.
 <a href="https://github.com/reduxjs/redux" rel="nofollow">
   <img src="https://img.shields.io/badge/@reduxjs/toolkit-2.13.0-brightgreen" alt="Redux Toolkit">
 </a>
-<a href="https://github.com/vitejs/vite" rel="nofollow">
-  <img src="https://img.shields.io/badge/vite-8.3.4-brightgreen" alt="Vite">
+<a href="https://github.com/vercel/next.js" rel="nofollow">
+  <img src="https://img.shields.io/badge/next.js-16-brightgreen" alt="Next.js">
 </a>
 <a href="https://github.com/WinmezzZ/react-antd-admin/blob/master/LICENSE">
   <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
@@ -36,7 +36,7 @@ Modern admin dashboard built with React Hooks and TypeScript.
 - 📜 **Blocks**: Build page with block template
 - 💎 **Hooks**: Use react hooks API instead of traditional class API
 - 📐 **Common Templates**: Typical templates for enterprise applications
-- 🚀 **State of The Art Development**: Modern React, Hooks, Redux Toolkit, Ant Design, TypeScript, and Vite stack
+- 🚀 **State of The Art Development**: Modern React, Hooks, Redux Toolkit, Ant Design, TypeScript, and Next.js stack
 - 📱 **Responsive**: Designed for variable screen sizes
 - 🎨 **Theming**: Dynamically switch system theme
 - 🌐 **International**: Built-in i18n solution
@@ -73,7 +73,7 @@ $ yarn install
 $ yarn build
 ```
 
-The production output is generated in `dist`. To deploy under a sub-path, configure Vite's `base` option in `vite.config.ts`.
+The production build is generated in `.next`. Run `npm start` or `yarn start` after building to serve it.
 
 ## 🖥 Browsers support
 
